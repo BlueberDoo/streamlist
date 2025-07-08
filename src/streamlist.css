@@ -1,0 +1,25 @@
+.page form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.page input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.page button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page button:hover {
+  background-color: #0056b3;
+}
