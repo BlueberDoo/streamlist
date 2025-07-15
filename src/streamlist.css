@@ -23,3 +23,42 @@
 .page button:hover {
   background-color: #0056b3;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+button {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* NEW ICON BUTTON STYLE */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.icon-btn:hover {
+  color: #0056b3;
+}
+
