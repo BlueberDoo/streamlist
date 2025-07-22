@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaTrash, FaEdit, FaCheck } from 'react-icons/fa';
 import './streamlist.css';
 
@@ -6,16 +6,24 @@ function StreamList() {
   const [input, setInput] = useState('');
   const [items, setItems] = useState([]);
 
+  // Load from localStorage on initial render
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('streamList'));
+    if (storedItems) {
+      setItems(storedItems);
+    }
+  }, []);
+
+  // Save to localStorage whenever items change
+  useEffect(() => {
+    localStorage.setItem('streamList', JSON.stringify(items));
+  }, [items]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.trim() !== '') {
-      setItems([...items, { id: Date.now(), text: input, completed: false }]);
-      setInput('');
-    }
-  };
-
-  const handleDelete = (id) => {
-    setItems(items.filter(item => item.id !== id));
+    if (!input.trim()) return;
+    setItems([...items, { id: Date.now(), text: input, completed: false }]);
+    setInput('');
   };
 
   const handleComplete = (id) => {
@@ -24,11 +32,15 @@ function StreamList() {
     ));
   };
 
+  const handleDelete = (id) => {
+    setItems(items.filter(item => item.id !== id));
+  };
+
   const handleEdit = (id) => {
-    const newText = prompt('Edit your item:');
-    if (newText) {
+    const editedText = prompt('Edit the item:');
+    if (editedText !== null && editedText.trim() !== '') {
       setItems(items.map(item =>
-        item.id === id ? { ...item, text: newText } : item
+        item.id === id ? { ...item, text: editedText } : item
       ));
     }
   };
@@ -41,11 +53,10 @@ function StreamList() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter something"
+          placeholder="Enter something to log"
         />
         <button type="submit">Submit</button>
       </form>
-
       <ul>
         {items.map((item) => (
           <li key={item.id} className={item.completed ? 'completed' : ''}>
@@ -61,5 +72,6 @@ function StreamList() {
 }
 
 export default StreamList;
+
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import StreamList from './streamlist';
-import Movies from './movies';
+import MovieSearch from './components/moviesearch';
 import Cart from './cart';
 import About from './about';
 import './App.css';
@@ -24,7 +24,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<StreamList />} />
-            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies" element={<MovieSearch />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
           </Routes>
