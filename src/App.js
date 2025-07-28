@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import StreamList from './streamlist';
 import MovieSearch from './components/moviesearch';
 import Cart from './cart';
@@ -14,10 +14,39 @@ function App() {
           <h1>StreamList App</h1>
           <nav>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/movies">Movies</Link></li>
-              <li><Link to="/cart">Cart</Link></li>
-              <li><Link to="/about">About</Link></li>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                  end
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/movies"
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                  Movies
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                  Cart
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                  About
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </header>

@@ -33,3 +33,9 @@ main {
   padding: 20px;
 }
 
+.active {
+  font-weight: bold;
+  color: #ff6347; /* or any color you prefer */
+  text-decoration: underline;
+}
+
